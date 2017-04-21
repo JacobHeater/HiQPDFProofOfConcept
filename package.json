@@ -19,7 +19,7 @@
     "url": "https://github.com/JacobHeater/HiQPDFProofOfConcept/issues"
   },
   "homepage": "https://github.com/JacobHeater/HiQPDFProofOfConcept#readme",
-  "devDependencies": {
+  "dependencies": {
     "express": "^4.15.2"
   }
 }
