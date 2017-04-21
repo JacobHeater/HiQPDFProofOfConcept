@@ -1,9 +1,11 @@
 (() => {
 
     'use strict';
+    
 
     const express = require('express');
     const app = express();
+    const PORT = process.env.PORT || 4444;
 
     const staticPaths = [
         '/scripts',
@@ -15,7 +17,7 @@
     app.get('/', (req, res) => res.sendFile(`${__dirname}/index.html`));
 
 
-    app.listen(process.env.PORT || 4444);
+    app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
 
 
 })();
