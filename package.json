@@ -1,0 +1,25 @@
+{
+  "name": "hiqpdfpoc",
+  "version": "0.0.1",
+  "description": "A proof of concept for HiQPdf conversion",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JacobHeater/HiQPDFProofOfConcept.git"
+  },
+  "keywords": [
+    "HiQPdf"
+  ],
+  "author": "Jacob Heater",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JacobHeater/HiQPDFProofOfConcept/issues"
+  },
+  "homepage": "https://github.com/JacobHeater/HiQPDFProofOfConcept#readme",
+  "devDependencies": {
+    "express": "^4.15.2"
+  }
+}
