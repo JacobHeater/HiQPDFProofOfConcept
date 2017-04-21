@@ -2,27 +2,27 @@
   
   'use strict';
   
-  const SELECTOR_EDITOR = '.editor';
-  const SELECTOR_ADD_PAGE = ".selection-pane .selections .selection.add-page";
+  var SELECTOR_EDITOR = '.editor';
+  var SELECTOR_ADD_PAGE = ".selection-pane .selections .selection.add-page";
   
-  let editor;
+  var editor;
   
   window.setupEditor = setupEditor;
   
   function setupEditor() {
 		editor = $(SELECTOR_EDITOR);
     
-    let page1 = addPage();
+    var page1 = addPage();
     
     generateWidgets(page1);
     
-    let page2 = addPage();
+    var page2 = addPage();
     
     generateWidgets(page2);
   }
   
   function generateWidgets(page) {
-    let type = 'img';
+    var type = 'img';
     
     for (var x = 0; x < 4; x++) {
 			for (var y = 0; y < 4; y++) {
@@ -33,7 +33,7 @@
   }
   
   function addPage() {
-    let page = createPage();
+    var page = createPage();
     editor.append(page);
     return page;
   }
@@ -48,7 +48,7 @@
       	width: 4,
       	auto: false
     };
-    return $(`<div class="page grid-stack" style="page-break-after: always;"></div>`)
+    return $('<div class="page grid-stack" style="page-break-after: always;"></div>')
       			.gridstack(options);
   }
   
