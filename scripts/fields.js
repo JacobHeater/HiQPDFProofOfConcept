@@ -1,10 +1,8 @@
 (function(window, $) {
   
   'use strict';
-  
-  Object.assign(window, {
-    generateWidget: generateWidget
-  });
+
+  window.generateWidget = generateWidget;
   
   function generateWidget(type) {
     var _switch = {
