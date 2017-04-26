@@ -9,7 +9,8 @@
 
     const staticPaths = [
         '/scripts',
-        '/styles'
+        '/styles',
+        '/img'
     ];
 
     staticPaths.forEach(p => app.use(p, express.static(`${__dirname}${p}`)));

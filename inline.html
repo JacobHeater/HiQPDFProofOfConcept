@@ -3648,38 +3648,28 @@
     </style>
     <style>
         body {
-            background-color: rgb(150, 150, 150);
             font-family: sans-serif;
+            padding: 0;
+            margin: 0;
         }
 
         a {
             text-decoration: none;
         }
 
-        .editor {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            width: 100vw;
-            padding: 5px 0 5px 0;
-        }
-
         .editor .page {
-            width: 8.5in !important;
-            height: 11in !important;
-            border: 1px solid rgb(100, 100, 100);
-            display: flex;
-            margin: 0 auto;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+            overflow-y: auto;
             background-color: white;
-            padding: .10in 0;
         }
 
         .editor .page .img-field {
             text-align: center;
+            background-color: rgb(150, 150, 150);
+            vertical-align: middle;
+        }
+
+        .editor .page .img-field .img {
+            background-color: rgb(150, 150, 150);
         }
 
         .grid-stack-item[data-gs-width="4"] {
@@ -21200,9 +21190,7 @@
 
             'use strict';
 
-            Object.assign(window, {
-                generateWidget: generateWidget
-            });
+            window.generateWidget = generateWidget;
 
             function generateWidget(type) {
                 var _switch = {
@@ -21218,7 +21206,7 @@
 
             function generateImageField() {
                 return generateField().append(
-                    '<div class="img-field"><img src="https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png" /></div>'
+                    '<div class="img-field"><img src="./img/Portrait_placeholder.png" /></div>'
                 );
             }
 
@@ -21266,6 +21254,7 @@
                 var page2 = addPage();
 
                 generateWidgets(page2);
+                generateWidgets(addPage());
             }
 
             function generateWidgets(page) {

@@ -21,5 +21,8 @@
   "homepage": "https://github.com/JacobHeater/HiQPDFProofOfConcept#readme",
   "dependencies": {
     "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "phantomjs": "^2.1.7"
   }
 }
