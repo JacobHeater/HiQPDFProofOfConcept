@@ -17,9 +17,6 @@
 
     app.get('/', (req, res) => res.sendFile(`${__dirname}/index.html`));
 
-    app.get('/inline', (req, res) => res.sendFile(`${__dirname}/inline.html`));
-
-
     app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
 
 

@@ -4,25 +4,28 @@
   "description": "A proof of concept for HiQPdf conversion",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "npm install && npm install -g phantomjs-prebuilt",
+    "make-pdf": "phantomjs rasterize.js",
+    "clean": "rm -rf test.pdf test.png"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JacobHeater/HiQPDFProofOfConcept.git"
+    "url": "git+https://github.com/JacobHeater/Html2PdfExample.git"
   },
   "keywords": [
-    "HiQPdf"
+    "Html2Pdf"
   ],
   "author": "Jacob Heater",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JacobHeater/HiQPDFProofOfConcept/issues"
+    "url": "https://github.com/JacobHeater/Html2PdfExample/issues"
   },
-  "homepage": "https://github.com/JacobHeater/HiQPDFProofOfConcept#readme",
+  "homepage": "https://github.com/JacobHeater/Html2PdfExample#readme",
   "dependencies": {
     "express": "^4.15.2"
   },
   "devDependencies": {
-    "phantomjs": "^2.1.7"
+    "phantomjs-prebuilt": "^2.1.7"
   }
 }

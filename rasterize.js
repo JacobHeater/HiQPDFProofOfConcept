@@ -1,43 +1,58 @@
-"use strict";
-var page = require('webpage').create(),
-    system = require('system'),
-    address, output, size, pageWidth, pageHeight;
+(function () {
 
-if (system.args.length < 0 || system.args.length > 5) {
-    console.log('Usage: rasterize.js URL filename [paperwidth*paperheight|paperformat] [zoom]');
-    console.log('  paper (pdf output) examples: "5in*7.5in", "10cm*20cm", "A4", "Letter"');
-    console.log('  image (png/jpg output) examples: "1920px" entire page, window width 1920px');
-    console.log('                                   "800px*600px" window, clipped to 800x600');
-    phantom.exit(1);
-} else {
-    address = system.args[1];
-    output = system.args[2];
-    page.viewportSize = { width: (8.5 * 96), height: (11 * 96) };
-    
+    'use strict';
+
+    var page = require('webpage').create();
+    var url = 'http://localhost:4444/';
+    var queryString = '?pdf-mode=1';
+    var CONSOLE_COLOR_RED = '\x1b[31m';
+
+    page.viewportSize = {
+        width: 1700,
+        height: 960
+    };
+    page.paperSize = {
+        width: '8.5in',
+        height: '11in',
+        margin: '0in'
+    };
+
     page.paperSize.orientation = 'portrait';
-    page.onConsoleMessage = function() {
+    page.onConsoleMessage = function () {
         var args = [].slice.call(arguments, 0);
         var str = JSON.stringify(args);
 
-        if (str.indexOf("Done!") > -1) {
+        if (str.indexOf('Done!') > -1) {
             console.log(str);
-            setTimeout(function() {
+            setTimeout(function () {
                 page.render('test.pdf');
-                page.render('test.png');
                 phantom.exit();
             }, 200);
         }
 
     };
 
-    page.onLoadFinished = function() {
+    page.onLoadFinished = function () {
         console.log([].slice.call(arguments, 0));
-        //phantom.exit();
     };
-    page.open('http://localhost:4444/?headless=1', function (status) {
+
+    page.open(formatString('{0}{1}', url, queryString), function (status) {
         if (status !== 'success') {
-            console.log('Unable to load the resource!');
+            console.log(CONSOLE_COLOR_RED, formatString('Unable to load resource "{0}"!', url));
             phantom.exit(1);
         }
     });
-}
+
+    function formatString() {
+        var str = arguments[0];
+        var token;
+
+        for (var i = 1; i < arguments.length; i++) {
+            token = '{' + (i - 1) + '}';
+            str = str.replace(token, arguments[i]);
+        }
+
+        return str;
+    }
+
+})();
